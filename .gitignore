@@ -1,0 +1,17 @@
+# Intellij
+.idea/
+*.iml
+out
+gen
+classes/
+
+# Mac
+.DS_Store
+
+
+# Eclipse
+build/
+.settings/
+.classpath
+.project
+.metadata
