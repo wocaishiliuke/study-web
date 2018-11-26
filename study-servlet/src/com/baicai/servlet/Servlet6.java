@@ -19,7 +19,8 @@ public class Servlet6 extends HttpServlet {
         /** 读取资源文件 */
         ServletContext context = this.getServletContext();
 
-        //有时IDE会编译到/build/classes下，但发布的时候还是会拷贝到/WEB-INF/classes下
+        //有时IDE会编译到/build/classes（Eclipse）或out（IDEA）目录下，但发布的时候还是会拷贝到/WEB-INF/classes下
+        //d.txt不会被发布
         String aPath = context.getRealPath("/WEB-INF/classes/a.txt");
         String bPath = context.getRealPath("/b.txt");
         String cPath = context.getRealPath("/WEB-INF/c.txt");
@@ -34,7 +35,7 @@ public class Servlet6 extends HttpServlet {
 
         //读取文件内容,这里只读a文件的,其他的方式相同
         InputStream in = new FileInputStream(aPath);
-        InputStreamReader isr = new InputStreamReader(in,"UTF-8");//这里也只能是U8,因为项目编码是U8
+        InputStreamReader isr = new InputStreamReader(in,"UTF-8");//这里只能是U8,因为项目编码是U8
         BufferedReader br = new BufferedReader(isr);
         String line = null;
         while ((line = br.readLine()) != null) {
